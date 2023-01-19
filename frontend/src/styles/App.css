@@ -1,0 +1,46 @@
+body {
+    color:black;
+}
+
+.App {
+    font-size: x-large;
+    height: 110vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.main_block {
+    width: 80%;
+    height: 80%;
+    background-color: rgb(170, 186, 253);
+    opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 200px;
+    margin-left: 20px;
+}
+
+label {
+    margin-left: 20px;
+    margin-top: 30px;
+    color: black;
+}
+
+button {
+    width: 200px;
+    background-color: blueviolet;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-size: xx-large;
+    margin-left: auto;
+    margin-right: auto;
+}
