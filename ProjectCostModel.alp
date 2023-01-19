@@ -6,16 +6,16 @@
 -->
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="7.0.2.201404181534" AlpVersion="7.0.2">
 <Model>
-	<Id>1670493762959</Id>
-	<Name><![CDATA[ProjectCost]]></Name>
+	<Id>1674070839759</Id>
+	<Name><![CDATA[ProjectCostModel]]></Name>
 	<EngineVersion>6</EngineVersion>
-	<JavaPackageName><![CDATA[materialPrediction]]></JavaPackageName>
+	<JavaPackageName><![CDATA[projectcostmodel]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Day]]></ModelTimeUnit>
 	<SystemOfMeasurement><![CDATA[METRIC]]></SystemOfMeasurement>
 	<ActiveObjectClasses>
 		<!--   =========   Active Object Class   ========  -->
 		<ActiveObjectClass>
-			<Id>1670493762961</Id>
+			<Id>1674070839761</Id>
 			<Name><![CDATA[Main]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
@@ -61,13 +61,12 @@
 				<AutoCreate>true</AutoCreate>
 				<RecurrenceCode><![CDATA[1]]></RecurrenceCode>
 			</DatasetsCreationProperties>
-			<DefaultGround>1672920779058</DefaultGround>
-			<ConnectionsId>1670493762960</ConnectionsId>
+			<ConnectionsId>1674070839760</ConnectionsId>
 			<Variables>
 				<Variable Class="AuxVariable">
-					<Id>1672919246076</Id>
+					<Id>1674070849193</Id>
 					<Name><![CDATA[currentDay]]></Name>
-					<X>460</X><Y>40</Y>
+					<X>780</X><Y>110</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -80,24 +79,69 @@
 
 				</Variable>
 				<Variable Class="AuxVariable">
-					<Id>1674055735343</Id>
-					<Name><![CDATA[price]]></Name>
-					<X>780</X><Y>140</Y>
+					<Id>1674070849195</Id>
+					<Name><![CDATA[outsourcePriceAmount]]></Name>
+					<X>280</X><Y>450</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[priceFunction()]]></Formula>
+						<Formula><![CDATA[outsourcePriceFunction()]]></Formula>
+						<Value><![CDATA[0]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1674070849197</Id>
+					<Name><![CDATA[teamPriceAmount]]></Name>
+					<X>330</X><Y>380</Y>
+					<Label><X>0</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="false" Array="false">
+						<Formula><![CDATA[teamPrice]]></Formula>
+						<Value><![CDATA[0]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1674070849199</Id>
+					<Name><![CDATA[penaltyPriceAmount]]></Name>
+					<X>280</X><Y>530</Y>
+					<Label><X>0</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="false" Array="false">
+						<Formula><![CDATA[penaltyPriceFunction()]]></Formula>
+						<Value><![CDATA[0]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1674075247258</Id>
+					<Name><![CDATA[totalWorkAmountD]]></Name>
+					<X>270</X><Y>120</Y>
+					<Label><X>0</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="false" Array="false">
+						<Formula><![CDATA[totalWorkAmount]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
 					</Properties>
 
 				</Variable>
 				<Variable Class="StockVariable">
-					<Id>1674050179998</Id>
+					<Id>1674070849201</Id>
 					<Name><![CDATA[currentWork]]></Name>
-					<X>370</X><Y>140</Y>
+					<X>440</X><Y>100</Y>
 					<Label><X>-45</X><Y>-45</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -107,14 +151,14 @@
 					<Width>60</Width>
 					<Height>60</Height>
 						<Expression><![CDATA[-100]]></Expression>
-						<InitialValue><![CDATA[totalWorkAmount]]></InitialValue>
+						<InitialValue><![CDATA[totalWorkAmountD]]></InitialValue>
 						<Color/>
 					</Properties>
 				</Variable>
 				<Variable Class="StockVariable">
-					<Id>1674050198267</Id>
+					<Id>1674070849203</Id>
 					<Name><![CDATA[doneWork]]></Name>
-					<X>630</X><Y>140</Y>
+					<X>700</X><Y>100</Y>
 					<Label><X>-35</X><Y>-45</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -128,9 +172,24 @@
 					</Properties>
 				</Variable>
 				<Variable Class="StockVariable">
-					<Id>1674055554699</Id>
+					<Id>1674070849205</Id>
 					<Name><![CDATA[totalPrice]]></Name>
-					<X>920</X><Y>140</Y>
+					<X>560</X><Y>220</Y>
+					<Label><X>-35</X><Y>-45</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Array="false">
+					<EquationStyle>classic</EquationStyle>
+					<Width>60</Width>
+					<Height>60</Height>
+						<Color/>
+					</Properties>
+				</Variable>
+				<Variable Class="StockVariable">
+					<Id>1674070849207</Id>
+					<Name><![CDATA[teamPriceSum]]></Name>
+					<X>560</X><Y>320</Y>
 					<Label><X>-35</X><Y>-45</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -139,19 +198,51 @@
 					<EquationStyle>custom</EquationStyle>
 					<Width>60</Width>
 					<Height>60</Height>
-						<Expression><![CDATA[priceFunction()]]></Expression>
+						<Expression><![CDATA[teamPriceAmount]]></Expression>
+						<Color/>
+					</Properties>
+				</Variable>
+				<Variable Class="StockVariable">
+					<Id>1674070849209</Id>
+					<Name><![CDATA[outsourcePriceSum]]></Name>
+					<X>560</X><Y>420</Y>
+					<Label><X>-35</X><Y>-45</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Array="false">
+					<EquationStyle>custom</EquationStyle>
+					<Width>60</Width>
+					<Height>60</Height>
+						<Expression><![CDATA[outsourcePriceAmount]]></Expression>
+						<Color/>
+					</Properties>
+				</Variable>
+				<Variable Class="StockVariable">
+					<Id>1674070849211</Id>
+					<Name><![CDATA[penaltyPriceSum]]></Name>
+					<X>560</X><Y>520</Y>
+					<Label><X>-35</X><Y>-45</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Array="false">
+					<EquationStyle>custom</EquationStyle>
+					<Width>60</Width>
+					<Height>60</Height>
+						<Expression><![CDATA[penaltyPriceAmount]]></Expression>
 						<Color/>
 					</Properties>
 				</Variable>
 				<Variable Class="Flow">
-					<Id>1674050915137</Id>
+					<Id>1674070849149</Id>
 					<Name><![CDATA[usage]]></Name>
-					<X>370</X><Y>140</Y>
+					<X>440</X><Y>100</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties SourceId="1674050179998" TargetId="1674050198267" External="false" Constant="false" Array="false">
+					<Properties SourceId="1674070849201" TargetId="1674070849203" External="false" Constant="false" Array="false">
 						<Formula><![CDATA[working()]]></Formula>
 						<Color/>
 						<ValveIndex>1</ValveIndex>
@@ -162,10 +253,29 @@
 						</Points>
 					</Properties>
 				</Variable>
+				<Variable Class="Flow">
+					<Id>1674070849151</Id>
+					<Name><![CDATA[price_realtime]]></Name>
+					<X>240</X><Y>220</Y>
+					<Label><X>10</X><Y>-25</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TargetId="1674070849205" External="false" Constant="false" Array="false">
+						<Formula><![CDATA[outsourcePriceAmount+penaltyPriceAmount+teamPriceAmount]]></Formula>
+						<Color/>
+						<ValveIndex>1</ValveIndex>
+						<Points>
+							<Point><X>0</X><Y>0</Y></Point>
+							<Point><X>100</X><Y>0</Y></Point>
+							<Point><X>320</X><Y>0</Y></Point>
+						</Points>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
-					<Id>1674049659687</Id>
+					<Id>1674070849170</Id>
 					<Name><![CDATA[totalWorkAmount]]></Name>
-					<X>280</X><Y>40</Y>
+					<X>210</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -175,7 +285,7 @@
 						<SdArray>false</SdArray>
 						<DefaultValue><![CDATA[100]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1674049659685</Id>
+							<Id>1674070849168</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -185,9 +295,9 @@
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1674049724346</Id>
+					<Id>1674070849173</Id>
 					<Name><![CDATA[totalWorkTime]]></Name>
-					<X>140</X><Y>40</Y>
+					<X>30</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -195,9 +305,9 @@
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
 						<Type><![CDATA[double]]></Type>
 						<SdArray>false</SdArray>
-						<DefaultValue><![CDATA[7]]></DefaultValue>
+						<DefaultValue><![CDATA[6]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1674049724344</Id>
+							<Id>1674070849171</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -207,9 +317,9 @@
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1674049742751</Id>
+					<Id>1674070849176</Id>
 					<Name><![CDATA[teamEfficiency]]></Name>
-					<X>440</X><Y>240</Y>
+					<X>30</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -219,7 +329,7 @@
 						<SdArray>false</SdArray>
 						<DefaultValue><![CDATA[10]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1674049742749</Id>
+							<Id>1674070849174</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -229,9 +339,9 @@
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1674049808858</Id>
+					<Id>1674070849179</Id>
 					<Name><![CDATA[outsourceEfficiency]]></Name>
-					<X>440</X><Y>260</Y>
+					<X>30</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -241,7 +351,7 @@
 						<SdArray>false</SdArray>
 						<DefaultValue><![CDATA[5]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1674049808856</Id>
+							<Id>1674070849177</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -251,9 +361,9 @@
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1674049831887</Id>
+					<Id>1674070849182</Id>
 					<Name><![CDATA[teamPrice]]></Name>
-					<X>780</X><Y>40</Y>
+					<X>30</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -263,7 +373,7 @@
 						<SdArray>false</SdArray>
 						<DefaultValue><![CDATA[100]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1674049831885</Id>
+							<Id>1674070849180</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -273,9 +383,9 @@
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1674049838808</Id>
+					<Id>1674070849185</Id>
 					<Name><![CDATA[outsourcePrice]]></Name>
-					<X>780</X><Y>60</Y>
+					<X>30</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -285,7 +395,7 @@
 						<SdArray>false</SdArray>
 						<DefaultValue><![CDATA[150]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1674049838806</Id>
+							<Id>1674070849183</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -295,9 +405,9 @@
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1674049855522</Id>
+					<Id>1674070849188</Id>
 					<Name><![CDATA[penalty]]></Name>
-					<X>580</X><Y>240</Y>
+					<X>30</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -307,7 +417,7 @@
 						<SdArray>false</SdArray>
 						<DefaultValue><![CDATA[1000]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1674049855520</Id>
+							<Id>1674070849186</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -317,9 +427,9 @@
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1674049899151</Id>
+					<Id>1674070849191</Id>
 					<Name><![CDATA[outsourceDay]]></Name>
-					<X>580</X><Y>260</Y>
+					<X>30</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -327,9 +437,9 @@
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
 						<Type><![CDATA[double]]></Type>
 						<SdArray>false</SdArray>
-						<DefaultValue><![CDATA[3]]></DefaultValue>
+						<DefaultValue><![CDATA[4]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1674049899149</Id>
+							<Id>1674070849189</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -340,13 +450,133 @@
 				</Variable>
 			</Variables>
 			<Dependences>
-				<Link SourceId="1674049659687" TargetId="1674050179998" Polarity="null">
-					<Height>-26.322653971848098</Height>
+				<Link SourceId="1674070849195" TargetId="1674070849151" Polarity="null">
+					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>90</X><Y>100</Y></Direction>
-					<Id>1674050798836</Id>
-					<Name><![CDATA[totalWorkAmount - currentWork]]></Name>
-					<X>280</X><Y>40</Y>
+					<Direction><X>40</X><Y>-210</Y></Direction>
+					<Id>1674070849153</Id>
+					<Name><![CDATA[outsourcePriceAmount - price_realtime]]></Name>
+					<X>280</X><Y>450</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1674070849170" TargetId="1674075247258" Polarity="null">
+					<Height>-38.829578973635165</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>60</X><Y>90</Y></Direction>
+					<Id>1674070849155</Id>
+					<Name><![CDATA[totalWorkAmount - totalWorkAmountD]]></Name>
+					<X>210</X><Y>30</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1674070849197" TargetId="1674070849151" Polarity="null">
+					<Height>13.592256505101687</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-10</X><Y>-140</Y></Direction>
+					<Id>1674070849157</Id>
+					<Name><![CDATA[teamPriceAmount - price_realtime]]></Name>
+					<X>330</X><Y>380</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1674070849199" TargetId="1674070849151" Polarity="null">
+					<Height>62.469807791223175</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>40</X><Y>-290</Y></Direction>
+					<Id>1674070849159</Id>
+					<Name><![CDATA[penaltyPriceAmount - price_realtime]]></Name>
+					<X>280</X><Y>530</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1674070849182" TargetId="1674070849197" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>300</X><Y>200</Y></Direction>
+					<Id>1674070849161</Id>
+					<Name><![CDATA[teamPrice - teamPriceAmount]]></Name>
+					<X>30</X><Y>180</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1674070849197" TargetId="1674070849207" Polarity="null">
+					<Height>-24.106700883924304</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>230</X><Y>-60</Y></Direction>
+					<Id>1674070849163</Id>
+					<Name><![CDATA[teamPriceAmount - teamPriceSum]]></Name>
+					<X>330</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1674070849199" TargetId="1674070849211" Polarity="null">
+					<Height>-23.90158772647885</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>280</X><Y>-10</Y></Direction>
+					<Id>1674070849165</Id>
+					<Name><![CDATA[penaltyPriceAmount - penaltyPriceSum]]></Name>
+					<X>280</X><Y>530</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1674070849195" TargetId="1674070849209" Polarity="null">
+					<Height>-12.287012364373709</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>280</X><Y>-30</Y></Direction>
+					<Id>1674070849167</Id>
+					<Name><![CDATA[outsourcePriceAmount - outsourcePriceSum]]></Name>
+					<X>280</X><Y>450</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1674075247258" TargetId="1674070849201" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>170</X><Y>-20</Y></Direction>
+					<Id>1674075284011</Id>
+					<Name><![CDATA[totalWorkAmountD - currentWork]]></Name>
+					<X>270</X><Y>120</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -358,10 +588,10 @@
 			</Dependences>
 			<Events>
 				<Event>
-					<Id>1672920928923</Id>
-					<Name><![CDATA[EveryDayEvent]]></Name>
-					<X>760</X><Y>520</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Id>1674070849145</Id>
+					<Name><![CDATA[display_number_of_days]]></Name>
+					<X>780</X><Y>30</Y>
+					<Label><X>15</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -378,9 +608,9 @@
 					</Properties>
 				</Event>
 				<Event>
-					<Id>1674055800900</Id>
+					<Id>1674070849147</Id>
 					<Name><![CDATA[stopEvent]]></Name>
-					<X>480</X><Y>180</Y>
+					<X>780</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -402,9 +632,9 @@
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1674051231248</Id>
+					<Id>1674070849139</Id>
 					<Name><![CDATA[working]]></Name>
-					<X>480</X><Y>100</Y>
+					<X>550</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -418,26 +648,39 @@ return usage;]]></Body>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1674053179068</Id>
-					<Name><![CDATA[priceFunction]]></Name>
-					<X>780</X><Y>100</Y>
+					<Id>1674070849141</Id>
+					<Name><![CDATA[outsourcePriceFunction]]></Name>
+					<X>30</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[double price = teamPrice;
+					<Body><![CDATA[double price = 0;
 if (currentDay >= outsourceDay && outsourceDay != 0){
-	price += outsourcePrice;
+	price = outsourcePrice;
 }
+return price;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1674070849143</Id>
+					<Name><![CDATA[penaltyPriceFunction]]></Name>
+					<X>30</X><Y>530</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[double price = 0;
 if(currentDay >= totalWorkTime){
-	price += penalty;
+	price = penalty;
 }
 return price;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
 				<AgentLink>
-					<Id>1670493762960</Id>
+					<Id>1674070839760</Id>
 					<Name><![CDATA[connections]]></Name>
 					<X>50</X><Y>-50</Y>
 					<Label><X>15</X><Y>0</Y></Label>
@@ -459,24 +702,10 @@ return price;]]></Body>
 
 
 			<Shapes>
-				<Ground>
-					<Id>1672920779058</Id>
-					<Name><![CDATA[groundDefault]]></Name>
-					<X>0</X><Y>0</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-
-
-					<Z>0</Z>
-				</Ground>
-
 				<Text>
-					<Id>1672920789203</Id>
+					<Id>1674070849128</Id>
 					<Name><![CDATA[days_text]]></Name>
-					<X>860</X><Y>500</Y>
+					<X>30</X><Y>390</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -495,374 +724,12 @@ return price;]]></Body>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Text>
-					<Id>1674059572850</Id>
-					<Name><![CDATA[text1]]></Name>
-					<X>20</X><Y>100</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Дедлайн сдачи проекта (день)]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1674059572854</Id>
-					<Name><![CDATA[text2]]></Name>
-					<X>20</X><Y>160</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Кол-во работы (ч/ч)]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1674059572856</Id>
-					<Name><![CDATA[text3]]></Name>
-					<X>20</X><Y>220</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Эффективность команды разработки (чч/д)]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1674059572858</Id>
-					<Name><![CDATA[text4]]></Name>
-					<X>20</X><Y>280</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Эффективность аутсорса (чч/д)]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1674059572860</Id>
-					<Name><![CDATA[text5]]></Name>
-					<X>20</X><Y>340</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Стоимость команды разработки (за день)]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1674059572862</Id>
-					<Name><![CDATA[text6]]></Name>
-					<X>20</X><Y>400</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Стоимость команды аутсорса (за день)]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1674059572864</Id>
-					<Name><![CDATA[text7]]></Name>
-					<X>20</X><Y>460</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Штраф за просрачивание дедлайна (руб/день)]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1674059572866</Id>
-					<Name><![CDATA[text8]]></Name>
-					<X>20</X><Y>520</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[День запуска работы аутсорса]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 			</Shapes>
-			<Controls>
-				<Control Type="Slider">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1674059572868</Id>
-					<Name><![CDATA[totalWorkTimeSlider]]></Name>
-					<X>20</X><Y>120</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-					</BasicProperties>
-					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[1]]></MinValue>
-						<MaxValue><![CDATA[100]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>totalWorkTime</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Slider">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1674059572870</Id>
-					<Name><![CDATA[totalWorkAmountSlider1]]></Name>
-					<X>20</X><Y>180</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-					</BasicProperties>
-					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[1]]></MinValue>
-						<MaxValue><![CDATA[1000]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>totalWorkAmount</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Slider">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1674059572872</Id>
-					<Name><![CDATA[totalWorkTimeSlider1]]></Name>
-					<X>20</X><Y>240</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-					</BasicProperties>
-					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[1]]></MinValue>
-						<MaxValue><![CDATA[200]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>teamEfficiency</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Slider">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1674059572874</Id>
-					<Name><![CDATA[totalWorkAmountSlider2]]></Name>
-					<X>20</X><Y>300</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-					</BasicProperties>
-					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[1]]></MinValue>
-						<MaxValue><![CDATA[200]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>outsourceEfficiency</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Slider">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1674059572876</Id>
-					<Name><![CDATA[totalWorkAmountSlider3]]></Name>
-					<X>20</X><Y>360</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-					</BasicProperties>
-					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[1]]></MinValue>
-						<MaxValue><![CDATA[30000]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>teamPrice</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Slider">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1674059572878</Id>
-					<Name><![CDATA[totalWorkAmountSlider4]]></Name>
-					<X>20</X><Y>420</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-					</BasicProperties>
-					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[1]]></MinValue>
-						<MaxValue><![CDATA[30000]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>outsourcePrice</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Slider">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1674059572880</Id>
-					<Name><![CDATA[totalWorkAmountSlider5]]></Name>
-					<X>20</X><Y>480</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-					</BasicProperties>
-					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[1]]></MinValue>
-						<MaxValue><![CDATA[30000]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>penalty</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Slider">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1674059572882</Id>
-					<Name><![CDATA[totalWorkAmountSlider6]]></Name>
-					<X>20</X><Y>540</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-					</BasicProperties>
-					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[1]]></MinValue>
-						<MaxValue><![CDATA[200]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>outsourceDay</Link>
-					</ExtendedProperties>
-				</Control>
-			</Controls>
 			<Charts>
     			<TimePlot>
-					<Id>1674054452813</Id>
+					<Id>1674070849132</Id>
 					<Name><![CDATA[plot1]]></Name>
-					<X>660</X><Y>180</Y>
+					<X>680</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -870,15 +737,15 @@ return price;]]></Body>
 					<AutoUpdate>true</AutoUpdate>
 					<RecurrenceCode><![CDATA[1]]></RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>340</Width>
-					<Height>280</Height>
+					<Width>310</Width>
+					<Height>190</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>260</Width>
-						<Height>190</Height>
+						<Width>230</Width>
+						<Height>100</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -906,7 +773,7 @@ return price;]]></Body>
 						<Title><![CDATA[price per day]]></Title>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-2987746</Color>
-					<Expression2><![CDATA[priceFunction()]]></Expression2>
+					<Expression2><![CDATA[outsourcePriceAmount+penaltyPriceAmount+teamPriceAmount]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>CIRCLE</PointStyle>
 						<LineWidth>1</LineWidth>
@@ -916,6 +783,67 @@ return price;]]></Body>
 					<CustomLabelFormat><![CDATA[dd.MM.yyyy HH:mm:ss]]></CustomLabelFormat>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
+    			<StackChart>
+					<Id>1674070849137</Id>
+					<Name><![CDATA[chart]]></Name>
+					<X>700</X><Y>270</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceCode><![CDATA[0.1]]></RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>290</Width>
+					<Height>330</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>30</XOffset>
+						<YOffset>30</YOffset>
+						<Width>230</Width>
+						<Height>210</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>60</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Expression><![CDATA[teamPriceSum]]></Expression>
+					<Color>-3137392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[teamPriceSum]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[penaltyPriceSum]]></Expression>
+					<Color>-13447886</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[penaltyPriceSum]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[outsourcePriceSum]]></Expression>
+					<Color>-32944</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[outsourcePriceSum]]></Title>
+					</DataItem>
+					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
+					<ScaleType>AUTO</ScaleType>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+    			</StackChart>
 			</Charts>
 
 		</ActiveObjectClass>
@@ -929,8 +857,8 @@ return price;]]></Body>
 	<TimeAccuracy>1.0E-5</TimeAccuracy>	
 	<Experiments>	
 		<!--   =========   Simulation Experiment   ========  -->
-		<SimulationExperiment ActiveObjectClassId="1670493762961">
-			<Id>1670493762976</Id>
+		<SimulationExperiment ActiveObjectClassId="1674070839761">
+			<Id>1674070839765</Id>
 			<Name><![CDATA[Simulation]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
@@ -952,10 +880,108 @@ return price;]]></Body>
 			<VmArgs><![CDATA[]]></VmArgs>
 			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
 			<SnapshotFile></SnapshotFile>
+			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1674071173445</Id>
+					<Name><![CDATA[a]]></Name>
+					<X>650</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1674071197545</Id>
+					<Name><![CDATA[b]]></Name>
+					<X>650</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1674071201849</Id>
+					<Name><![CDATA[c]]></Name>
+					<X>650</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1674071371432</Id>
+					<Name><![CDATA[d]]></Name>
+					<X>650</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1674071380637</Id>
+					<Name><![CDATA[e]]></Name>
+					<X>650</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1674071385259</Id>
+					<Name><![CDATA[f]]></Name>
+					<X>650</X><Y>370</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1674071391718</Id>
+					<Name><![CDATA[g]]></Name>
+					<X>650</X><Y>430</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1674071437746</Id>
+					<Name><![CDATA[h]]></Name>
+					<X>650</X><Y>490</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+			</Variables>
 
 			<Shapes>
 				<Text>
-					<Id>1670493762977</Id>
+					<Id>1674070839766</Id>
 					<Name><![CDATA[text]]></Name>
 					<X>40</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -968,10 +994,186 @@ return price;]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12490271</Color>
-					<Text><![CDATA[ProjectCost]]></Text>
+					<Text><![CDATA[ProjectCostModel]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1674070939861</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>250</X><Y>60</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Дедлайн сдачи проекта (день)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1674070939864</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>250</X><Y>120</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Кол-во работы (ч/ч)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1674070939866</Id>
+					<Name><![CDATA[text3]]></Name>
+					<X>250</X><Y>180</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Эффективность команды разработки (чч/д)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1674070939868</Id>
+					<Name><![CDATA[text4]]></Name>
+					<X>250</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Эффективность аутсорса (чч/д)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1674070939870</Id>
+					<Name><![CDATA[text5]]></Name>
+					<X>250</X><Y>300</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Стоимость команды разработки (за день)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1674070939872</Id>
+					<Name><![CDATA[text6]]></Name>
+					<X>250</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Стоимость команды аутсорса (за день)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1674070939874</Id>
+					<Name><![CDATA[text7]]></Name>
+					<X>250</X><Y>420</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Штраф за просрачивание дедлайна (руб/день)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1674070939876</Id>
+					<Name><![CDATA[text8]]></Name>
+					<X>250</X><Y>480</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[День начала работы аутсорса]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -980,14 +1182,14 @@ return price;]]></Body>
 			<Controls>
 				<Control Type="Button">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1670493762978</Id>
+					<Id>1674070839767</Id>
 					<Name><![CDATA[button]]></Name>
 					<X>40</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="190" Height="100" 
+					<BasicProperties Width="100" Height="30" 
 				AsObject="true">
                         <EmbeddedIcon>false</EmbeddedIcon>				
 						<FillColor/>
@@ -1004,40 +1206,224 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 	"Агент верхнего уровня"]]></LabelCode>
 					</ExtendedProperties>
 				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1674070939878</Id>
+					<Name><![CDATA[totalWorkTimeSlider]]></Name>
+					<X>250</X><Y>80</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[1]]></MinValue>
+						<MaxValue><![CDATA[100]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>a</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1674070939880</Id>
+					<Name><![CDATA[totalWorkAmountSlider1]]></Name>
+					<X>250</X><Y>140</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[1]]></MinValue>
+						<MaxValue><![CDATA[1000]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>b</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1674070939882</Id>
+					<Name><![CDATA[totalWorkTimeSlider1]]></Name>
+					<X>250</X><Y>200</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[1]]></MinValue>
+						<MaxValue><![CDATA[200]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>c</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1674070939884</Id>
+					<Name><![CDATA[totalWorkAmountSlider2]]></Name>
+					<X>250</X><Y>260</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[1]]></MinValue>
+						<MaxValue><![CDATA[200]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>d</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1674070939886</Id>
+					<Name><![CDATA[totalWorkAmountSlider3]]></Name>
+					<X>250</X><Y>320</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[1]]></MinValue>
+						<MaxValue><![CDATA[30000]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>e</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1674070939888</Id>
+					<Name><![CDATA[totalWorkAmountSlider4]]></Name>
+					<X>250</X><Y>380</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[1]]></MinValue>
+						<MaxValue><![CDATA[30000]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>f</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1674070939890</Id>
+					<Name><![CDATA[totalWorkAmountSlider5]]></Name>
+					<X>250</X><Y>440</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[1]]></MinValue>
+						<MaxValue><![CDATA[30000]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>g</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1674070939892</Id>
+					<Name><![CDATA[totalWorkAmountSlider6]]></Name>
+					<X>250</X><Y>500</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[1]]></MinValue>
+						<MaxValue><![CDATA[200]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>h</Link>
+					</ExtendedProperties>
+				</Control>
 			</Controls>
 
 			<Parameters>			
 				<Parameter>
 					<ParameterName><![CDATA[totalWorkAmount]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[b]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[totalWorkTime]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[a]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[teamEfficiency]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[c]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[outsourceEfficiency]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[d]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[teamPrice]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[e]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[outsourcePrice]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[f]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[penalty]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[g]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[outsourceDay]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[h]]></ParameterValue>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties 
@@ -1049,7 +1435,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				EnableZoom="true">
 				<ExecutionMode><![CDATA[realTimeScaled]]></ExecutionMode>
 				<CpuRatio><![CDATA[ratio_1_2]]></CpuRatio>	        
-				<Title><![CDATA[materialPrediction : Simulation]]></Title>	
+				<Title><![CDATA[ProjectCostModel : Simulation]]></Title>	
 				<FramesPerSecond><![CDATA[20.0]]></FramesPerSecond>
 				<RealTimeScale>1.0</RealTimeScale>
 				<UIProperty Name="Experiment Progress" Value="false"/>
@@ -1072,15 +1458,15 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 			<ModelTimeProperties 
 				UseCalendar="false">
 				<StopOption><![CDATA[Never]]></StopOption>
-				<InitialDate><![CDATA[1670457600000]]></InitialDate>	
+				<InitialDate><![CDATA[1674000000000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1673136000000]]></FinalDate>	
+				<FinalDate><![CDATA[1676678400000]]></FinalDate>	
 				<FinalTime><![CDATA[100.0]]></FinalTime>	
 			</ModelTimeProperties>
 		</SimulationExperiment>	
 		<!--   =========  Custom Experiment   ========  -->
 		<CustomExperiment>
-			<Id>0</Id>
+			<Id>1674073738159</Id>
 			<Name><![CDATA[CustomExperiment]]></Name>
 			<MaximumMemory>64</MaximumMemory>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
